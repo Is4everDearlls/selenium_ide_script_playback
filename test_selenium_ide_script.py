@@ -2,7 +2,7 @@ import json
 
 from selenium.webdriver import Chrome
 
-from pagechecker_pro.selenium_ide.testcase import Command
+from framework.selenium_ide import Command
 
 
 def json_data_reader(json_file):

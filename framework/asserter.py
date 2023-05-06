@@ -31,9 +31,7 @@ class JSONDataAsserter(BaseAsserter):
                 data = json.loads(data)
             except JSONDecodeError:
                 return False
-        data = self.extract(data)
-        return data == self.expect
-
-    @abc.abstractmethod
-    def extract(self, data, *args, **kwargs):
-        return jsonpath.jsonpath(data, self.expression)
+        data = jsonpath.jsonpath(data, self.expression)
+        if data and len(data) == 1:
+            data = data[0]
+        return str(data) == str(self.expect)

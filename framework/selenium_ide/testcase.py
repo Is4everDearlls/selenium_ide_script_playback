@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from common.operable import BaseWebOperation, BaseTestCase
+from framework.operable import BaseWebOperation, BaseTestCase
 
 
 class BaseSeleniumIDEScript(object):
@@ -12,7 +12,7 @@ class BaseSeleniumIDEScript(object):
 class Command(BaseSeleniumIDEScript, BaseWebOperation):
     def __init__(self, id, comment, command, target, targets, value, openWindow: bool = False,
                  windowHandlesName: str = '',
-                 windowTimeout: int = 0,
+                 windowTimeout: int = 10,
                  driver=None):
         super().__init__(id, comment if comment else command)
         self.comment = comment
