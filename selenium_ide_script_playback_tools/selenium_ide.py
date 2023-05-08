@@ -1,11 +1,8 @@
 import json
-import time
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 
-from selenium_ide_script_playback_tools.collector.console import WebDriverConsoleCollector
-from selenium_ide_script_playback_tools.collector.network import WebDriverNetworkCollector
+from selenium_ide_script_playback_tools.collector import WebDriverNetworkCollector, WebDriverConsoleCollector
 from selenium_ide_script_playback_tools.operable import BaseWebOperation, BaseTestCase
 
 
