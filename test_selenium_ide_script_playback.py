@@ -2,7 +2,7 @@ import json
 
 from selenium.webdriver import Chrome, DesiredCapabilities
 
-from framework.selenium_ide.testcase import Command
+from selenium_ide_script_playback_tools.selenium_ide.testcase import Command
 
 
 def json_data_reader(json_file):

@@ -4,9 +4,9 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
-from framework.collector.console import WebDriverConsoleCollector
-from framework.collector.network import WebDriverNetworkCollector
-from framework.operable import BaseWebOperation, BaseTestCase
+from selenium_ide_script_playback_tools.collector.console import WebDriverConsoleCollector
+from selenium_ide_script_playback_tools.collector.network import WebDriverNetworkCollector
+from selenium_ide_script_playback_tools.operable import BaseWebOperation, BaseTestCase
 
 
 class BaseSeleniumIDEScript(object):

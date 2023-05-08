@@ -5,8 +5,8 @@ from typing import Any, List
 from selenium.common import WebDriverException
 from selenium.webdriver.support.wait import WebDriverWait
 
-from framework.collector.base import BaseCollector
-from framework.utils import json_data_extract
+from selenium_ide_script_playback_tools.collector.base import BaseCollector
+from selenium_ide_script_playback_tools.utils import json_data_extract
 
 
 class HttpRequestDetails:

@@ -1,6 +1,6 @@
 from typing import List
 
-from framework.collector.base import BaseCollector
+from selenium_ide_script_playback_tools.collector.base import BaseCollector
 
 
 class ConsoleLog(dict):
