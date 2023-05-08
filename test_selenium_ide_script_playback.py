@@ -11,7 +11,7 @@ def json_data_reader(json_file):
 
 
 if __name__ == '__main__':
-    data = json_data_reader("SeleniumIDEScript.side")
+    data = json_data_reader("selenium_ide_script.side")
     url = data.get("url")
     caps = DesiredCapabilities.CHROME
     caps['goog:loggingPrefs'] = {'performance': 'ALL'}
