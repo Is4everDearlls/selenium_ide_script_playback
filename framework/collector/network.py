@@ -20,6 +20,16 @@ class HttpRequestDetails:
         self.canceled = False
         self.error_text = None
 
+    def __dict__(self):
+        return {
+            "request_id": self.id,
+            "request": self.request,
+            "response": self.response,
+            "loading_status": self.loading_status,
+            "canceled": self.canceled,
+            "error_text": self.error_text
+        }
+
     def append_chrome_devtools_protocol_log(self, log, driver):
         method = json_data_extract(log, "$.message.message.method")
         if method.startswith("Network"):
@@ -210,14 +220,15 @@ class WebDriverNetworkCollector(BaseCollector):
         self.http_request_details = {}
 
     def collect(self, driver, *args, **kwargs) -> List[HttpRequestDetails]:
-        return WebDriverWait(driver, self.TIMEOUT).until(self)
+        data = WebDriverWait(driver, self.TIMEOUT).until(self)
+        return [] if isinstance(data,bool) else [d.__dict__() for d in data]
 
     def __call__(self, driver, *args, **kwargs):
         _logs = driver.get_log(self.LOG_TYPE)
         if len(_logs) == 0:
             data = self.http_request_details.copy()
             self.http_request_details.clear()
-            return data.values()
+            return data.values() if len(data.values()) > 0 else True
         for _log in _logs:
             _log['message'] = json.loads(_log.get("message"))
             method = json_data_extract(_log, "$.message.message.method")

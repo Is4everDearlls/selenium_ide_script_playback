@@ -1,5 +1,11 @@
-from selenium.webdriver.common.by import By
+import json
+import time
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+
+from framework.collector.console import WebDriverConsoleCollector
+from framework.collector.network import WebDriverNetworkCollector
 from framework.operable import BaseWebOperation, BaseTestCase
 
 
@@ -10,8 +16,8 @@ class BaseSeleniumIDEScript(object):
 
 
 class Command(BaseSeleniumIDEScript, BaseWebOperation):
-    def __init__(self, id, comment, command, target, targets, value, openWindow: bool = False,
-                 windowHandlesName: str = '',
+    def __init__(self, id, comment, command, target, targets, value, opensWindow: bool = False,
+                 windowHandleName: str = '',
                  windowTimeout: int = 10,
                  driver=None):
         super().__init__(id, comment if comment else command)
@@ -21,9 +27,24 @@ class Command(BaseSeleniumIDEScript, BaseWebOperation):
         self.target = target
         self.targets = targets
         self.value = value
-        self.open_window = openWindow
-        self.window_handles_name = windowHandlesName
+        self.open_window = opensWindow
+        self.window_handle_name = windowHandleName
         self.window_timeout = windowTimeout
+        self.data = {}
+
+    def __str__(self):
+        data = {
+            "comment": self.comment,
+            "command": self.command,
+            "target": self.target,
+            "targets": self.targets,
+            "value": self.value,
+            "open_window": self.open_window,
+            "window_handles_name": self.window_handle_name,
+            "window_timeout": self.window_timeout,
+            "data": self.data
+        }
+        return json.dumps(data)
 
     def _get_locator(self):
         keys = {
@@ -43,13 +64,16 @@ class Command(BaseSeleniumIDEScript, BaseWebOperation):
         if self.open_window:
             self.save_window_handles()
         locator = self._get_locator() if not locator else locator
-        super().click(locator, timeout, message, ec=None)
+        super().click(locator)
         if self.open_window:
-            self.wait_and_save_new_window(self.window_handles_name, self.window_timeout)
+            self.wait_and_save_new_window(self.window_handle_name, self.window_timeout)
 
     def selectWindow(self):
         target = self.target.split("=", 1)[1].replace("${", '').replace("}", '')
         self.switch_to_window(target)
+
+    def storeWindowHandle(self):
+        self.GLOBAL_WINDOW_HANDLES[self.target] = self.driver.window_handles
 
     def type(self):
         self.send_keys(self._get_locator(), self.value)
@@ -62,7 +86,11 @@ class Command(BaseSeleniumIDEScript, BaseWebOperation):
         instance = cls(*args, **kwargs)
         setattr(instance, "driver", driver)
         setattr(cls, "driver", driver)
-        return getattr(instance, instance.command)()
+        getattr(instance, instance.command)()
+        requests = WebDriverNetworkCollector().collect(driver)
+        instance.data['requests'] = [] if isinstance(requests, bool) else requests
+        instance.data['consoles'] = WebDriverConsoleCollector().collect(driver)
+        return instance
 
 
 class TestCase(BaseSeleniumIDEScript, BaseTestCase):

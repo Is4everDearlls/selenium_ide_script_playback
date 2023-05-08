@@ -1,4 +1,5 @@
 import abc
+import time
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -17,12 +18,13 @@ class BaseWebOperation(metaclass=abc.ABCMeta):
     def save_window_handles(cls):
         cls.GLOBAL_WINDOW_HANDLES["window_handles"] = cls.driver.window_handles
 
+
     @classmethod
     def wait_and_save_new_window(cls, key, timeout):
         window_handles = cls.GLOBAL_WINDOW_HANDLES["window_handles"]
         WebDriverWait(cls.driver, timeout).until(expected.new_window_is_opened(window_handles))
         new_window_handles = cls.driver.window_handles
-        new_window_handle = set(window_handles).difference(set(new_window_handles)).pop()
+        new_window_handle = set(new_window_handles).difference(set(window_handles)).pop()
         cls.GLOBAL_WINDOW_HANDLES[key] = new_window_handle
 
     @classmethod

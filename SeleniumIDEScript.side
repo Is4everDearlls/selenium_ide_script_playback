@@ -7,46 +7,21 @@
     "id": "98198138-ea20-483c-ab8e-f1a6a9136482",
     "name": "testcase-01",
     "commands": [{
-      "id": "f67248e2-388b-40c9-85c9-7b7f9cc310e7",
+      "id": "c81b317d-a528-45b1-9b32-e19d015c73ae",
       "comment": "",
-      "command": "assert_timeout_30000",
-      "target": "https://ibaibu",
+      "command": "open",
+      "target": "https://dev-login.textile-story.com/?redirect=https%3A%2F%2Fdev-xuanwu.textile-story.com%2F%23%2F",
       "targets": [],
       "value": ""
     }, {
-      "id": "f233a8e4-2e5d-40e7-bbc7-1eede9341a90",
+      "id": "5e4def10-38d5-4719-8fcc-60b3b1f7230e",
       "comment": "",
       "command": "setWindowSize",
-      "target": "2286x1165",
+      "target": "1920x1019",
       "targets": [],
       "value": ""
     }, {
-      "id": "ba5d3afc-6929-4955-9b99-a2afd43fb9e8",
-      "comment": "",
-      "command": "click",
-      "target": "id=tab-2",
-      "targets": [
-        ["id=tab-2", "id"],
-        ["css=#tab-2", "css:finder"],
-        ["xpath=//div[@id='tab-2']", "xpath:attributes"],
-        ["xpath=//div[@id='app']/section/div[3]/div/div/div/div/div/div[3]", "xpath:idRelative"],
-        ["xpath=//div/div[3]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "79196853-5e9f-4d08-bb0a-89d506bab97e",
-      "comment": "",
-      "command": "click",
-      "target": "css=.sign-in-with-password-form > .el-form-item:nth-child(1) .el-input__inner",
-      "targets": [
-        ["css=.sign-in-with-password-form > .el-form-item:nth-child(1) .el-input__inner", "css:finder"],
-        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='pane-2']/form/div/div/div/input", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div/div/div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "0d585860-793a-46e7-b461-f59540dd3a17",
+      "id": "5dd69efd-380d-462d-9c3a-aba3e679283a",
       "comment": "",
       "command": "click",
       "target": "id=tab-usePassword",
@@ -59,14 +34,7 @@
       ],
       "value": ""
     }, {
-      "id": "c78ccaf3-22c5-4a56-b23f-e5cf2513ef31",
-      "comment": "",
-      "command": "open",
-      "target": "https://textile-story",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "657f48a6-e742-4610-8cf2-b03da320ef86",
+      "id": "d2667037-35d5-4b24-b9e1-87a16bc2bde1",
       "comment": "",
       "command": "click",
       "target": "css=.sign-in-with-password-form > .el-form-item:nth-child(1) .el-input__inner",
@@ -78,7 +46,7 @@
       ],
       "value": ""
     }, {
-      "id": "8de7ac5a-bd56-4665-a9c3-db717f671de5",
+      "id": "13fd8110-e7dd-431e-a2a3-1dfffef69c3a",
       "comment": "",
       "command": "type",
       "target": "css=.sign-in-with-password-form > .el-form-item:nth-child(1) .el-input__inner",
@@ -90,7 +58,7 @@
       ],
       "value": "廖加权"
     }, {
-      "id": "991a9623-4e90-4e73-9d2a-f48c14a03024",
+      "id": "d6a01c2b-7e9b-4634-b747-5d18475fed60",
       "comment": "",
       "command": "type",
       "target": "css=.sign-in-with-password-form > .el-form-item:nth-child(2) .el-input__inner",
@@ -100,129 +68,30 @@
         ["xpath=//div[@id='pane-usePassword']/form/div[2]/div/div/input", "xpath:idRelative"],
         ["xpath=//div[3]/form/div[2]/div/div/input", "xpath:position"]
       ],
-      "value": "awk4s1cs5d"
-    }, {
-      "id": "79312082-62a6-4192-84d3-2fc6e571ca09",
-      "comment": "",
-      "command": "sendKeys",
-      "target": "css=.sign-in-with-password-form > .el-form-item:nth-child(2) .el-input__inner",
-      "targets": [
-        ["css=.sign-in-with-password-form > .el-form-item:nth-child(2) .el-input__inner", "css:finder"],
-        ["xpath=//input[@type='password']", "xpath:attributes"],
-        ["xpath=//div[@id='pane-usePassword']/form/div[2]/div/div/input", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div[2]/div/div/input", "xpath:position"]
-      ],
-      "value": "${KEY_ENTER}"
-    }, {
-      "id": "ee5a1866-db1d-456b-9f35-a12bcd47f606",
-      "comment": "",
-      "command": "click",
-      "target": "css=.is-success:nth-child(2) .el-input__inner",
-      "targets": [
-        ["css=.is-success:nth-child(2) .el-input__inner", "css:finder"],
-        ["xpath=//input[@type='password']", "xpath:attributes"],
-        ["xpath=//div[@id='pane-usePassword']/form/div[2]/div/div/input", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div[2]/div/div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "5ed781ae-865a-44ea-ac6f-fb3b1277fc96",
-      "comment": "",
-      "command": "type",
-      "target": "css=.is-success:nth-child(2) .el-input__inner",
-      "targets": [
-        ["css=.is-success:nth-child(2) .el-input__inner", "css:finder"],
-        ["xpath=//input[@type='password']", "xpath:attributes"],
-        ["xpath=//div[@id='pane-usePassword']/form/div[2]/div/div/input", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div[2]/div/div/input", "xpath:position"]
-      ],
       "value": "qa123456Q"
     }, {
-      "id": "fbf702e0-1669-4338-afb2-bc5f376fa6fa",
+      "id": "e13dcd1f-3e05-4c4b-bbd5-a2e422f81794",
       "comment": "",
       "command": "click",
-      "target": "linkText=ZX13159206159216",
+      "target": "css=.el-form-item:nth-child(3) .el-button",
       "targets": [
-        ["linkText=ZX13159206159216", "linkText"],
-        ["css=.hover-row a", "css:finder"],
-        ["xpath=//a[contains(text(),'ZX13159206159216')]", "xpath:link"],
-        ["xpath=//div[@id='app']/div/section/main/section/div/div/div/section/section/main/main/div[2]/div/div/div/div[3]/div/div/div/table/tbody/tr[9]/td[2]/div/a", "xpath:idRelative"],
-        ["xpath=//a[contains(@href, '#/order/detail/ZX13159206159216')]", "xpath:href"],
-        ["xpath=//tr[9]/td[2]/div/a", "xpath:position"],
-        ["xpath=//a[contains(.,'ZX13159206159216')]", "xpath:innerText"]
+        ["css=.el-form-item:nth-child(3) .el-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
+        ["xpath=//div[@id='pane-usePassword']/form/div[3]/div/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/button", "xpath:position"]
       ],
-      "value": "",
-      "opensWindow": true,
-      "windowHandleName": "win6753",
-      "windowTimeout": 2000
-    }, {
-      "id": "6cfc8df0-1a30-4132-9393-37e1f1b31bb2",
-      "comment": "",
-      "command": "storeWindowHandle",
-      "target": "root",
-      "targets": [],
       "value": ""
     }, {
-      "id": "95a041e8-ea8a-47dc-ab6b-d86803da365d",
-      "comment": "",
-      "command": "selectWindow",
-      "target": "handle=${win6753}",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "eea3e896-ad93-4855-ba8b-57ece7b90269",
-      "comment": "",
-      "command": "selectWindow",
-      "target": "handle=${root}",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "b6b8ed0f-0148-4897-93d1-e73c7395b128",
-      "comment": "",
-      "command": "close",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "97045d07-2bdf-484a-86d0-aae6bf0f9a32",
-      "comment": "",
-      "command": "selectWindow",
-      "target": "handle=${win6753}",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "11bf0199-5278-40bf-a4a1-6ca9b533db6b",
-      "comment": "",
-      "command": "close",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "cadacff6-9eaa-45d4-8f56-e3214637d969",
-      "comment": "",
-      "command": "sendKeys",
-      "target": "css=.is-success:nth-child(2) .el-input__inner",
-      "targets": [
-        ["css=.is-success:nth-child(2) .el-input__inner", "css:finder"],
-        ["xpath=//input[@type='password']", "xpath:attributes"],
-        ["xpath=//div[@id='pane-usePassword']/form/div[2]/div/div/input", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div[2]/div/div/input", "xpath:position"]
-      ],
-      "value": "${KEY_ENTER}"
-    }, {
-      "id": "644a6929-c866-4979-aec3-e02e70c7d389",
+      "id": "ebd32d8a-7791-497d-90ef-8b6583c1a07d",
       "comment": "",
       "command": "click",
-      "target": "css=.menu-wrapper:nth-child(2) .el-sub-menu__title > span",
+      "target": "css=.menu-wrapper:nth-child(2) use",
       "targets": [
-        ["css=.menu-wrapper:nth-child(2) .el-sub-menu__title > span", "css:finder"],
-        ["xpath=//div[@id='app']/div/aside/div/section[2]/div/div/div/ul/div[2]/li/div/span", "xpath:idRelative"],
-        ["xpath=//div/span", "xpath:position"],
-        ["xpath=//span[contains(.,'订单管理')]", "xpath:innerText"]
+        ["css=.menu-wrapper:nth-child(2) use", "css:finder"]
       ],
       "value": ""
     }, {
-      "id": "949ec94c-7965-41fe-9101-461c0186b6c2",
+      "id": "35498671-7eb9-46bb-b391-29e69bb0ff35",
       "comment": "",
       "command": "click",
       "target": "css=.is-opened > .el-menu span",
@@ -234,169 +103,49 @@
       ],
       "value": ""
     }, {
-      "id": "5f6f946f-397e-48fd-a4ec-47152e111885",
+      "id": "a056bcae-f37e-4bfa-a481-35aeac7d4e53",
       "comment": "",
-      "command": "mouseOver",
-      "target": "css=.is-opened > .el-menu span",
+      "command": "click",
+      "target": "css=.search-input > .el-input__inner",
       "targets": [
-        ["css=.is-opened > .el-menu span", "css:finder"],
-        ["xpath=//div[@id='app']/div/aside/div/section[2]/div/div/div/ul/div[2]/li/ul/div/a/li/span", "xpath:idRelative"],
-        ["xpath=//li/ul/div/a/li/span", "xpath:position"],
-        ["xpath=//span[contains(.,'订单列表')]", "xpath:innerText"]
+        ["css=.search-input > .el-input__inner", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/section/main/section/div/div/div/section/section/header/form/div/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "c413bdd3-5088-4da9-b9d9-cdccc6006eef",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=.is-active > span:nth-child(1)",
-      "targets": [
-        ["css=.is-active > span:nth-child(1)", "css:finder"],
-        ["xpath=//div[@id='app']/div/aside/div/section[2]/div/div/div/ul/div[2]/li/ul/div/a/li/span", "xpath:idRelative"],
-        ["xpath=//li/ul/div/a/li/span", "xpath:position"],
-        ["xpath=//span[contains(.,'订单列表')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "d02c0535-6f76-4482-96c5-c1729a0d6413",
+      "id": "7321281c-957e-4774-a2a7-1589dc589af2",
       "comment": "",
       "command": "type",
-      "target": "css=.sign-in-with-password-form > .el-form-item:nth-child(1) .el-input__inner",
+      "target": "css=.search-input > .el-input__inner",
       "targets": [
-        ["css=.sign-in-with-password-form > .el-form-item:nth-child(1) .el-input__inner", "css:finder"],
-        ["xpath=(//input[@type='text'])[3]", "xpath:attributes"],
-        ["xpath=//div[@id='pane-2']/form/div/div/div/input", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div/div/div/input", "xpath:position"]
+        ["css=.search-input > .el-input__inner", "css:finder"],
+        ["xpath=(//input[@type='text'])[5]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/section/main/section/div/div/div/section/section/header/form/div/div[2]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/input", "xpath:position"]
       ],
-      "value": "廖加权"
+      "value": "7636"
     }, {
-      "id": "8ecdc3f8-56d1-4420-bb21-c2af96af9764",
-      "comment": "",
-      "command": "type",
-      "target": "css=.el-form-item:nth-child(2) > .el-form-item__content > .el-input > .el-input__inner",
-      "targets": [
-        ["css=.el-form-item:nth-child(2) > .el-form-item__content > .el-input > .el-input__inner", "css:finder"],
-        ["xpath=//input[@type='password']", "xpath:attributes"],
-        ["xpath=//div[@id='pane-2']/form/div[2]/div/div/input", "xpath:idRelative"],
-        ["xpath=//div[2]/div/div/input", "xpath:position"]
-      ],
-      "value": "qa123456Q"
-    }, {
-      "id": "070d46a5-de99-4f3e-9b0c-0980785a0857",
+      "id": "cb6b4bb3-542c-47e8-8825-373acd03b85e",
       "comment": "",
       "command": "click",
-      "target": "css=.sign-in-with-password-form > .el-form-item .el-button > span",
+      "target": "css=.el-form-item__content > .el-button:nth-child(1) > span",
       "targets": [
-        ["css=.sign-in-with-password-form > .el-form-item .el-button > span", "css:finder"],
-        ["xpath=//div[@id='pane-2']/form/div[3]/div/button/span", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div[3]/div/button/span", "xpath:position"]
+        ["css=.el-form-item__content > .el-button:nth-child(1) > span", "css:finder"],
+        ["xpath=//div[@id='app']/div/section/main/section/div/div/div/section/section/header/form/div/div[3]/div/div/button/span", "xpath:idRelative"],
+        ["xpath=//button/span", "xpath:position"],
+        ["xpath=//span[contains(.,'查询')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "41a82e02-cb5b-4024-ab8d-3d5b043825fa",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.sign-in-with-password-form > .el-form-item .el-button > span",
-      "targets": [
-        ["css=.sign-in-with-password-form > .el-form-item .el-button > span", "css:finder"],
-        ["xpath=//div[@id='pane-2']/form/div[3]/div/button/span", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div[3]/div/button/span", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "bda0c780-0817-4138-b29d-09987231de58",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "css=.is-loading > span",
-      "targets": [
-        ["css=.is-loading > span", "css:finder"],
-        ["xpath=//div[@id='pane-2']/form/div[3]/div/button/span", "xpath:idRelative"],
-        ["xpath=//div[3]/form/div[3]/div/button/span", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "7ee9247f-a09b-4e89-b22c-1473928748c9",
-      "comment": "",
-      "command": "click",
-      "target": "css=.el-dialog__wrapper:nth-child(2) .el-dialog__close",
-      "targets": [
-        ["css=.el-dialog__wrapper:nth-child(2) .el-dialog__close", "css:finder"],
-        ["xpath=//div[@id='app']/section/div[2]/div/div/button/i", "xpath:idRelative"],
-        ["xpath=//div[2]/div/div/button/i", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "9d3be102-3705-4a6b-bbf6-8ffc5a70e862",
-      "comment": "",
-      "command": "close",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }]
-  }, {
-    "id": "e808482c-fe57-4ef4-a838-8fca035306a1",
-    "name": "testcase-02",
-    "commands": []
-  }, {
-    "id": "530b2edc-5c48-46ba-b40d-57f6ab2bc329",
-    "name": "testcase-03",
-    "commands": [{
-      "id": "68042e3b-7f2c-4f72-9af4-bf985db1ffc4",
-      "comment": "",
-      "command": "open",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "19e23aee-d6f5-4c88-9c06-09709cc4e571",
-      "comment": "",
-      "command": "setWindowSize",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "b101de2b-f43e-4e80-9fc7-e99197de7e0e",
-      "comment": "",
-      "command": "click",
-      "target": "css=.menu-wrapper:nth-child(2) .el-sub-menu__title",
-      "targets": [
-        ["css=.menu-wrapper:nth-child(2) .el-sub-menu__title", "css:finder"],
-        ["xpath=//div[@id='app']/div/aside/div/section[2]/div/div/div/ul/div[2]/li/div", "xpath:idRelative"],
-        ["xpath=//li/div", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "a56d867f-296f-4a7a-a4a4-5ded7561e58a",
-      "comment": "",
-      "command": "click",
-      "target": "css=.is-opened > .el-menu span",
-      "targets": [
-        ["css=.is-opened > .el-menu span", "css:finder"],
-        ["xpath=//div[@id='app']/div/aside/div/section[2]/div/div/div/ul/div[2]/li/ul/div/a/li/span", "xpath:idRelative"],
-        ["xpath=//li/ul/div/a/li/span", "xpath:position"],
-        ["xpath=//span[contains(.,'订单列表')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "194b263b-5a82-4b2a-9e6b-f367f489edf9",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "css=.is-opened > .el-menu span",
-      "targets": [
-        ["css=.is-opened > .el-menu span", "css:finder"],
-        ["xpath=//div[@id='app']/div/aside/div/section[2]/div/div/div/ul/div[2]/li/ul/div/a/li/span", "xpath:idRelative"],
-        ["xpath=//li/ul/div/a/li/span", "xpath:position"],
-        ["xpath=//span[contains(.,'订单列表')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "9d67a504-03e6-40d4-9e33-1b734baa12d0",
+      "id": "47a7f3b3-9a4c-43c3-afd6-c30ff3811336",
       "comment": "",
       "command": "click",
       "target": "linkText=ZX33162190577636",
       "targets": [
         ["linkText=ZX33162190577636", "linkText"],
-        ["css=.el-table__row:nth-child(1) a", "css:finder"],
+        ["css=a:nth-child(2)", "css:finder"],
         ["xpath=//a[contains(text(),'ZX33162190577636')]", "xpath:link"],
         ["xpath=//div[@id='app']/div/section/main/section/div/div/div/section/section/main/main/div[2]/div/div/div/div[3]/div/div/div/table/tbody/tr/td[2]/div/a", "xpath:idRelative"],
         ["xpath=//a[contains(@href, '#/order/detail/ZX33162190577636')]", "xpath:href"],
@@ -405,61 +154,67 @@
       ],
       "value": "",
       "opensWindow": true,
-      "windowHandleName": "win4103",
+      "windowHandleName": "win6929",
       "windowTimeout": 2000
     }, {
-      "id": "c74c3b79-7874-43de-9dba-bca032cfb360",
+      "id": "37b5d5ef-9625-47ce-bb4e-a6d17320eebe",
       "comment": "",
       "command": "storeWindowHandle",
       "target": "root",
       "targets": [],
       "value": ""
     }, {
-      "id": "73babd6f-de18-472c-8bce-a6d65a170d4b",
+      "id": "9029bcd6-2ef2-4b6f-8fa2-9bac6c4705ad",
       "comment": "",
       "command": "selectWindow",
-      "target": "handle=${win4103}",
+      "target": "handle=${win6929}",
       "targets": [],
       "value": ""
     }, {
-      "id": "68e8a396-0e87-456b-9496-c0f9e8d9094c",
+      "id": "1b3d507d-aadd-41ea-9d89-bbac43f05c59",
       "comment": "",
       "command": "selectWindow",
       "target": "handle=${root}",
       "targets": [],
       "value": ""
     }, {
-      "id": "307e5a97-825b-4dba-9e69-115e4e0a9648",
+      "id": "f38af733-c84c-4f8e-bf6e-69777e8b2210",
       "comment": "",
       "command": "close",
       "target": "",
       "targets": [],
       "value": ""
     }, {
-      "id": "76348f73-3c6e-4229-a9d2-ef3a3594da8e",
+      "id": "c8c45eae-8209-47ee-9093-3ba37e39d98a",
       "comment": "",
       "command": "selectWindow",
-      "target": "handle=${win4103}",
+      "target": "handle=${win6929}",
       "targets": [],
       "value": ""
     }, {
-      "id": "f13836b9-e163-409c-bcff-0c66471fcb44",
+      "id": "25295354-b1cb-4eac-8d9a-6633f078a5c9",
       "comment": "",
       "command": "close",
       "target": "",
       "targets": [],
       "value": ""
     }, {
-      "id": "08d8e2fe-2b4f-4c9a-9930-efc72c0763ac",
+      "id": "b14c7696-a386-4d07-9b13-028949b5ac38",
       "comment": "",
-      "command": "mouseOut",
-      "target": "css=.is-active > span:nth-child(1)",
+      "command": "click",
+      "target": "css=.app-layout-body",
       "targets": [
-        ["css=.is-active > span:nth-child(1)", "css:finder"],
-        ["xpath=//div[@id='app']/div/aside/div/section[2]/div/div/div/ul/div[2]/li/ul/div/a/li/span", "xpath:idRelative"],
-        ["xpath=//li/ul/div/a/li/span", "xpath:position"],
-        ["xpath=//span[contains(.,'订单列表')]", "xpath:innerText"]
+        ["css=.app-layout-body", "css:finder"],
+        ["xpath=//div[@id='app']/div/section/main", "xpath:idRelative"],
+        ["xpath=//main", "xpath:position"]
       ],
+      "value": ""
+    }, {
+      "id": "5f05f059-0aa6-4efd-8b7a-55788156a260",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
       "value": ""
     }]
   }],
@@ -469,7 +224,7 @@
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["e808482c-fe57-4ef4-a838-8fca035306a1", "98198138-ea20-483c-ab8e-f1a6a9136482", "530b2edc-5c48-46ba-b40d-57f6ab2bc329"]
+    "tests": ["98198138-ea20-483c-ab8e-f1a6a9136482"]
   }],
   "urls": [],
   "plugins": []
