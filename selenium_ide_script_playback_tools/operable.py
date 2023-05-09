@@ -29,8 +29,9 @@ class BaseWebOperation(metaclass=abc.ABCMeta):
         return current_window_handle
 
     def wait_new_window_handle(self, key: str = None, timeout: int = 10):
-        self.window_handles('window_handles')
-        window_handles = self.GLOBAL_WINDOW_HANDLES["window_handles"]
+        window_handles = self.GLOBAL_WINDOW_HANDLES.get('window_handles')
+        if not window_handles:
+            window_handles = self.driver.window_handles
         WebDriverWait(self.driver, timeout).until(expected.new_window_is_opened(window_handles))
         new_window_handles = self.driver.window_handles
         new_window_handle = set(new_window_handles).difference(set(window_handles)).pop()
