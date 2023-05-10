@@ -181,9 +181,12 @@ class TestCase(BaseSeleniumIDEScript):
                 if network.type in ['xhr', 'XHR']:
                     step.add_sub_step(f'XHR:[{network.response_status_code}]:{network.url}',
                                       json.dumps(network.response_body, ensure_ascii=False), AttachmentType.JSON)
+                    if network.response_body and network.response_body.get('code') != '200':
+                        result.result = False
             for console in command.details.get('consoles', []):
-                if console.level == 'SERVER':
+                if console.level == 'SEVERE':
                     step.add_sub_step(f'Console:{console.message}', json.dumps(console), AttachmentType.JSON)
+                    result.result = False
             result.steps.append(step)
             result.description = command.details.get('exception')
         return result
