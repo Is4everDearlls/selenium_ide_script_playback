@@ -2,3 +2,4 @@
 /.idea
 .pytest_cache/
 result/
+/selenium_ide_script.side
