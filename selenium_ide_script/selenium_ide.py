@@ -93,6 +93,9 @@ class Command(BaseSeleniumIDEScript, BaseWebOperation):
     def setWindowSize(self):
         return self.maximize_window()
 
+    def close(self):
+        pass
+
     def click(self, locator=None, timeout=None, message=None, ec=None):
         if self.open_window:
             self.window_handles("window_handles")

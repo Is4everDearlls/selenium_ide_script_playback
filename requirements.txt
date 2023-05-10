@@ -1,2 +1,3 @@
 selenium~=4.9.0
 jsonpath~=0.82
+pytest~=7.3.1
