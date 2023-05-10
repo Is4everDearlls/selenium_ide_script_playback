@@ -4,9 +4,9 @@ import sys
 import pytest
 
 
-def test_selenium_ide_script(result):
-    result.write()
-    assert result.result
+def test_selenium_ide_script(testcase):
+    testcase.write()
+    assert testcase.result
 
 
 if __name__ == '__main__':

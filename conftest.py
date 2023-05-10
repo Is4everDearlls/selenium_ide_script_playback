@@ -15,4 +15,4 @@ def pytest_generate_tests(metafunc):
         with open('selenium_ide_script.side', encoding='utf-8') as f:
             file = SeleniumIDEScriptFile(**json.load(f))
             result.extend(file.running(driver))
-    metafunc.parametrize("result", result)
+    metafunc.parametrize("testcase", result)

@@ -8,7 +8,8 @@ from allure_commons.types import AttachmentType
 from selenium.webdriver.common.by import By
 
 from selenium_ide_script.allure import TestResult, Step
-from selenium_ide_script.collector import WebDriverNetworkCollector, WebDriverConsoleCollector
+from selenium_ide_script.collector import WebDriverNetworkCollector, WebDriverConsoleCollector, \
+    WebDriverScreenshotCollector
 from selenium_ide_script.operable import BaseWebOperation
 
 
@@ -169,6 +170,11 @@ class TestCase(BaseSeleniumIDEScript):
                 step = Step(f"{command.comment} -> {command.result}")
             else:
                 step = Step(f"{command.command} -> {command.result}")
+            screenshot = WebDriverScreenshotCollector.get_screenshot_as_png(driver)
+            step.add_sub_step('screenshot', screenshot, AttachmentType.PNG)
+            if not command.result:
+                result.result = False
+
             for network in command.details.get('requests', []):
                 if network.type in ['xhr', 'XHR']:
                     step.add_sub_step(f'XHR:[{network.response_status_code}]:{network.url}',
@@ -178,8 +184,6 @@ class TestCase(BaseSeleniumIDEScript):
                     step.add_sub_step(f'Console:{console.message}', json.dumps(console), AttachmentType.JSON)
             result.steps.append(step)
             result.description = command.details.get('exception')
-            if not command.result:
-                result.result = False
         return result
 
 

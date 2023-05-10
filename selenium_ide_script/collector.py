@@ -214,3 +214,9 @@ class WebDriverNetworkCollector(BaseCollector):
                 network.append_chrome_devtools_protocol_log(_log, driver)
                 self.networks[request_id] = network
         return False
+
+
+class WebDriverScreenshotCollector:
+    @staticmethod
+    def get_screenshot_as_png(driver):
+        return driver.get_screenshot_as_png()
