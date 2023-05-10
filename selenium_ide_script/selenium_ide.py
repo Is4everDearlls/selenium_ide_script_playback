@@ -121,6 +121,9 @@ class Command(BaseSeleniumIDEScript, BaseWebOperation):
     def mouseOver(self):
         self.move_to_element(self.target)
 
+    def mouseOut(self):
+        pass
+
     @classmethod
     def execute(cls, driver, command, target=None, value=None, id=None, comment='', targets=None, opensWindow=False,
                 windowHandleName='',
