@@ -1,5 +1,4 @@
 import abc
-from typing import Union
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -19,29 +18,29 @@ class BaseWebOperation(metaclass=abc.ABCMeta):
     def window_handles(self, key: str = 'window_handles'):
         window_handles = self.driver.window_handles
         if key:
-            self.GLOBAL_WINDOW_HANDLES[key] = window_handles
+            BaseWebOperation.GLOBAL_WINDOW_HANDLES[key] = window_handles
         return window_handles
 
     def current_window_handle(self, key: str = None):
         current_window_handle = self.driver.current_window_handle
         if key:
-            self.GLOBAL_WINDOW_HANDLES[key] = current_window_handle
+            BaseWebOperation.GLOBAL_WINDOW_HANDLES[key] = current_window_handle
         return current_window_handle
 
-    def wait_new_window_handle(self, key: str = None, timeout: int = 10):
-        window_handles = self.GLOBAL_WINDOW_HANDLES.get('window_handles')
+    def wait_new_window_handle(self, key: str = None, timeout: int = 10000):
+        window_handles = BaseWebOperation.GLOBAL_WINDOW_HANDLES.get('window_handles')
         if not window_handles:
             window_handles = self.driver.window_handles
-        WebDriverWait(self.driver, timeout).until(expected.new_window_is_opened(window_handles))
+        WebDriverWait(self.driver, timeout / 1000).until(expected.new_window_is_opened(window_handles))
         new_window_handles = self.driver.window_handles
         new_window_handle = set(new_window_handles).difference(set(window_handles)).pop()
         if key:
-            self.GLOBAL_WINDOW_HANDLES[key] = new_window_handle
+            BaseWebOperation.GLOBAL_WINDOW_HANDLES[key] = new_window_handle
         return new_window_handle
 
     def switch_to_window(self, handles):
-        if handles in self.GLOBAL_WINDOW_HANDLES.keys():
-            self.driver.switch_to.window(self.GLOBAL_WINDOW_HANDLES.get(handles))
+        if handles in BaseWebOperation.GLOBAL_WINDOW_HANDLES.keys():
+            self.driver.switch_to.window(BaseWebOperation.GLOBAL_WINDOW_HANDLES.get(handles))
         else:
             self.driver.switch_to.window(handles)
 
@@ -49,6 +48,17 @@ class BaseWebOperation(metaclass=abc.ABCMeta):
         self.driver.close()
 
     def find_element(self, locator, timeout=None, message=None, ec=None):
+
+        def _split_string_locator(_str):
+            _keys = {
+                "linkText": By.LINK_TEXT,
+                "css": By.CSS_SELECTOR,
+            }
+            _by, _locator = _str.split("=", 1)
+            return _keys.get(_by, _by), _locator
+
+        if isinstance(locator, str):
+            locator = _split_string_locator(locator)
         if not ec:
             ec = BaseWebOperation.DEFAULT_WAIT_EXPECTED
         if not timeout:
@@ -80,7 +90,7 @@ class BaseWebOperation(metaclass=abc.ABCMeta):
         return ActionChains(self.driver)
 
     @classmethod
-    def execute(cls, driver, method, **params):
+    def execute(cls, driver, method, *args, **params):
         instance = cls()
         setattr(instance, 'driver', driver)
         return getattr(instance, method)(**params)

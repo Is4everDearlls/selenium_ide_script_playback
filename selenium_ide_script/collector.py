@@ -6,7 +6,7 @@ from typing import Any, List
 from selenium.common import WebDriverException
 from selenium.webdriver.support.wait import WebDriverWait
 
-from selenium_ide_script_playback_tools.utils import json_data_extract
+from selenium_ide_script.utils import json_data_extract
 
 
 class BaseCollector(metaclass=abc.ABCMeta):
@@ -126,13 +126,13 @@ class NetworkLog(dict):
         self._set_headers("request_headers", json_data_extract(log, "$.message.message.params.request.headers"))
         self['type'] = json_data_extract(log, "$.message.message.params.type")
         self['post_data'] = json_data_extract(log, "$.message.message.params.request.postData")
-        self['timing']['request'] = json_data_extract(log, "$.timestamp")
+        self._set_timing('request', json_data_extract(log, "$.timestamp"))
 
     def _request_will_be_sent_extra_info(self, log):
         self._set_headers("request_headers", json_data_extract(log, "$.message.message.params.headers"))
 
     def _response_received(self, log, driver):
-        self['timing']['response'] = json_data_extract(log, "$.timestamp")
+        self._set_timing('response', json_data_extract(log, "$.timestamp"))
         self['response_status_code'] = json_data_extract(log, "$.message.message.params.response.status")
         self._set_headers('response_headers', json_data_extract(log, "$.message.message.params.headers"))
         _response_body = {}
@@ -153,13 +153,13 @@ class NetworkLog(dict):
         self['finished'] = True
         self['canceled'] = False
         self['error'] = None
-        self['timing']['finished'] = json_data_extract(log, "$.timestamp")
+        self._set_timing('finished', json_data_extract(log, "$.timestamp"))
 
     def _loading_failed(self, log):
         self['finished'] = True
         self['canceled'] = json_data_extract(log, '$.message.message.params.canceled')
         self['error'] = json_data_extract(log, '$.message.message.params.errorText')
-        self['timing']['finished'] = json_data_extract(log, "$.timestamp")
+        self._set_timing('finished', json_data_extract(log, "$.timestamp"))
 
     def _set_headers(self, key, headers):
         if headers and isinstance(headers, dict):
@@ -173,6 +173,11 @@ class NetworkLog(dict):
         if not self.get('logs'):
             self['logs'] = []
         self['logs'].append(log)
+
+    def _set_timing(self, key, value):
+        if not self.get('timing'):
+            self['timing'] = {}
+        self['timing'][key] = value
 
     def __eq__(self, other):
         if isinstance(other, NetworkLog):

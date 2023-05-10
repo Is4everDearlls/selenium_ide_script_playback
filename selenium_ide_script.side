@@ -170,52 +170,6 @@
       "target": "handle=${win6929}",
       "targets": [],
       "value": ""
-    }, {
-      "id": "1b3d507d-aadd-41ea-9d89-bbac43f05c59",
-      "comment": "",
-      "command": "selectWindow",
-      "target": "handle=${root}",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "f38af733-c84c-4f8e-bf6e-69777e8b2210",
-      "comment": "",
-      "command": "close",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "c8c45eae-8209-47ee-9093-3ba37e39d98a",
-      "comment": "",
-      "command": "selectWindow",
-      "target": "handle=${win6929}",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "25295354-b1cb-4eac-8d9a-6633f078a5c9",
-      "comment": "",
-      "command": "close",
-      "target": "",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "b14c7696-a386-4d07-9b13-028949b5ac38",
-      "comment": "",
-      "command": "click",
-      "target": "css=.app-layout-body",
-      "targets": [
-        ["css=.app-layout-body", "css:finder"],
-        ["xpath=//div[@id='app']/div/section/main", "xpath:idRelative"],
-        ["xpath=//main", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "5f05f059-0aa6-4efd-8b7a-55788156a260",
-      "comment": "",
-      "command": "close",
-      "target": "",
-      "targets": [],
-      "value": ""
     }]
   }],
   "suites": [{
