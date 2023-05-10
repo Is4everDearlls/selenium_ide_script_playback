@@ -158,7 +158,7 @@ class TestCase(BaseSeleniumIDEScript):
         result = TestResult(file_name, suite_name, self.name, True)
         for command in self.commands:
             if command.get('command') == 'open' and command.get('target') == '/':
-                command.target = url
+                command['target'] = url
             command = Command.execute(driver, **command)
             if command.comment:
                 step = Step(f"{command.comment} -> {command.result}")
@@ -211,8 +211,9 @@ class TestSuites(BaseSeleniumIDEScript):
 
 class SeleniumIDEScriptFile(BaseSeleniumIDEScript):
 
-    def __init__(self, id, name, tests, suites, **kwargs):
+    def __init__(self, id, name, url, tests, suites, **kwargs):
         super().__init__(id, name, **kwargs)
+        self['url'] = url
         self['tests'] = tests
         self['suites'] = suites
 

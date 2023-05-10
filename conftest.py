@@ -12,7 +12,7 @@ def pytest_generate_tests(metafunc):
     caps["excludeSwitches"] = ['enable-automation', 'enable-logging']
 
     with Chrome(desired_capabilities=caps) as driver:
-        with open('selenium_ide_script.side', encoding='utf-8') as f:
+        with open('xuanwu.side', encoding='utf-8') as f:
             file = SeleniumIDEScriptFile(**json.load(f))
             result.extend(file.running(driver))
     metafunc.parametrize("result", result)
