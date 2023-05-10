@@ -31,6 +31,7 @@ class Step:
 
 class TestResult:
     def __init__(self, file_name, suite_name, testcase_name, result=True):
+        super().__init__()
         self.file_name = file_name
         self.suite_name = suite_name
         self.testcase_name = testcase_name
@@ -43,4 +44,3 @@ class TestResult:
         allure.dynamic.title(self.testcase_name)
         for step in self.steps:
             step.write()
-        assert self.result

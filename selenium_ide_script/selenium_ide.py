@@ -156,20 +156,19 @@ class TestCase(BaseSeleniumIDEScript):
         for command in self.commands:
             command = Command.execute(driver, **command)
             if command.comment:
-                step = Step(command.comment)
+                step = Step(f"{command.comment} -> {command.result}")
             else:
-                step = Step(f"{command.command} -> target:{command.target} -> value={command.value}")
+                step = Step(f"{command.command} -> {command.result}")
             for network in command.details.get('requests', []):
-                if network.type == ['XHR'] and not network.canceled:
+                if network.type in ['xhr', 'XHR']:
                     step.add_sub_step(f'XHR:[{network.response_status_code}]:{network.url}',
                                       json.dumps(network.response_body, ensure_ascii=False), AttachmentType.JSON)
             for console in command.details.get('consoles', []):
-                if console.level == 'SERVER':
+                if console.level == 'SEVERE':
                     step.add_sub_step(f'Console:{console.message}', json.dumps(console), AttachmentType.JSON)
             result.steps.append(step)
             if not command.result:
                 result.result = False
-                break
         return result
 
 
