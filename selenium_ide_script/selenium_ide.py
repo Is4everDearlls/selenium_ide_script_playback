@@ -165,6 +165,7 @@ class TestCase(BaseSeleniumIDEScript):
                 continue
             if command.get('command') == 'open' and command.get('target') == '/':
                 command['target'] = url
+
             command = Command.execute(driver, **command)
             if command.comment:
                 step = Step(f"{command.comment} -> {command.result}")
@@ -180,7 +181,7 @@ class TestCase(BaseSeleniumIDEScript):
                     step.add_sub_step(f'XHR:[{network.response_status_code}]:{network.url}',
                                       json.dumps(network.response_body, ensure_ascii=False), AttachmentType.JSON)
             for console in command.details.get('consoles', []):
-                if console.level == 'SEVERE':
+                if console.level == 'SERVER':
                     step.add_sub_step(f'Console:{console.message}', json.dumps(console), AttachmentType.JSON)
             result.steps.append(step)
             result.description = command.details.get('exception')
