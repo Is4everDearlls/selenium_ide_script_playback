@@ -1,11 +1,12 @@
 import json
-
 from selenium.webdriver import DesiredCapabilities, Chrome
 
 from selenium_ide_script.selenium_ide import SeleniumIDEScriptFile
+from selenium_ide_script.utils import update_chromedriver_version
 
 
 def pytest_generate_tests(metafunc):
+    update_chromedriver_version()
     result = []
     caps = DesiredCapabilities.CHROME
     caps['goog:loggingPrefs'] = {'performance': 'ALL'}
