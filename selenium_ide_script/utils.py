@@ -19,7 +19,6 @@ def json_data_reader(json_file):
         return json.load(f)
 
 
-@staticmethod
 def get_chrome_version():
     try:
         key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, 'Software\\Google\\Chrome\\BLBeacon')
@@ -29,7 +28,6 @@ def get_chrome_version():
         raise RuntimeWarning('没有找到chrome浏览器注册表信息')
 
 
-@staticmethod
 def get_chromedriver_version():
     chromedriver_version_info = os.popen('chromedriver --version').read()
     try:
@@ -40,7 +38,6 @@ def get_chromedriver_version():
         raise RuntimeWarning('没有找到可用的chromedriver，请检查执行环境')
 
 
-@staticmethod
 def update_chromedriver_version():
     chrome_version = get_chrome_version()
     chromedriver_version = get_chromedriver_version()
