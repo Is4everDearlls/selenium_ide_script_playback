@@ -30,11 +30,12 @@ class Step:
 
 
 class TestResult:
-    def __init__(self, file_name, suite_name, testcase_name, result=True):
+    def __init__(self, file_name, suite_name, testcase_name, description=None, result=True):
         super().__init__()
         self.file_name = file_name
         self.suite_name = suite_name
         self.testcase_name = testcase_name
+        self.description = description
         self.steps = []
         self.result = result
 
@@ -42,5 +43,6 @@ class TestResult:
         allure.dynamic.epic(self.file_name)
         allure.dynamic.story(self.suite_name)
         allure.dynamic.title(self.testcase_name)
+        allure.dynamic.description(self.description)
         for step in self.steps:
             step.write()

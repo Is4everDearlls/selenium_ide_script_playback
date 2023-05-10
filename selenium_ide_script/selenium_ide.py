@@ -170,6 +170,7 @@ class TestCase(BaseSeleniumIDEScript):
                 if console.level == 'SEVERE':
                     step.add_sub_step(f'Console:{console.message}', json.dumps(console), AttachmentType.JSON)
             result.steps.append(step)
+            result.description = command.details.get('exception')
             if not command.result:
                 result.result = False
         return result
