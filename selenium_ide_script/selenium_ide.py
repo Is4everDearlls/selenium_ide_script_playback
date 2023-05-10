@@ -161,7 +161,8 @@ class TestCase(BaseSeleniumIDEScript):
     def running(self, file_name, suite_name, url, driver):
         result = TestResult(file_name, suite_name, self.name, True)
         for command in self.commands:
-            if command.get("command").startswith('//'):
+            _command = command.get("command")
+            if _command.startswith('//') or _command in ['mouseOver', 'mouseOut']:
                 continue
             if command.get('command') == 'open' and command.get('target') == '/':
                 command['target'] = url
