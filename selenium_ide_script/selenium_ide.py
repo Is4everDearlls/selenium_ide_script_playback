@@ -1,11 +1,9 @@
 import json
 import time
-from enum import Enum
-from typing import Union, List, Dict
 
-import allure
+from typing import List
+
 from allure_commons.types import AttachmentType
-from selenium.webdriver.common.by import By
 
 from selenium_ide_script.allure import TestResult, Step
 from selenium_ide_script.collector import WebDriverNetworkCollector, WebDriverConsoleCollector, \
