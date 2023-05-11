@@ -168,10 +168,7 @@ class TestCase(BaseSeleniumIDEScript):
                 command['target'] = url
 
             command = Command.execute(driver, **command)
-            if command.comment:
-                step = Step(f"{command.comment} -> {command.result}")
-            else:
-                step = Step(f"{command.command} -> {command.result}")
+            step = Step(f"{command.comment if command.comment else command.command} -> {command.result}")
             screenshot = WebDriverScreenshotCollector.get_screenshot_as_png(driver)
             step.add_sub_step('screenshot', screenshot, AttachmentType.PNG)
 
@@ -184,7 +181,7 @@ class TestCase(BaseSeleniumIDEScript):
                         if status_code not in ['200', 200]:
                             command.result = False
                             result.result = False
-                            step.title = f"{command.command} -> {command.result}"
+                            step.title = f"{command.comment if command.comment else command.command} -> {command.result}"
                     step.add_sub_step(
                         f'XHR:[{network.response_status_code if not status_code else status_code}]:{network.url}',
                         json.dumps(network.response_body, ensure_ascii=False), AttachmentType.JSON)
