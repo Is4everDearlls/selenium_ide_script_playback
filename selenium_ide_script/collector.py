@@ -15,12 +15,15 @@ class BaseCollector(metaclass=abc.ABCMeta):
 
 
 class ConsoleLog(dict):
+    @property
     def level(self):
         return self.get('level')
 
+    @property
     def message(self):
         return self.get('message')
 
+    @property
     def timestamp(self):
         return self.get('timestamp', 0)
 
