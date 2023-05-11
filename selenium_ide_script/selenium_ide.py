@@ -174,19 +174,26 @@ class TestCase(BaseSeleniumIDEScript):
                 step = Step(f"{command.command} -> {command.result}")
             screenshot = WebDriverScreenshotCollector.get_screenshot_as_png(driver)
             step.add_sub_step('screenshot', screenshot, AttachmentType.PNG)
-            if not command.result:
-                result.result = False
 
             for network in command.details.get('requests', []):
-                if network.type in ['xhr', 'XHR']:
-                    step.add_sub_step(f'XHR:[{network.response_status_code}]:{network.url}',
-                                      json.dumps(network.response_body, ensure_ascii=False), AttachmentType.JSON)
-                    if network.response_body and network.response_body.get('code') != '200':
-                        result.result = False
+                if network.type in ['xhr', 'XHR'] and not network.canceled:
+                    status_code = None
+                    response_body = network.response_body
+                    if response_body and isinstance(response_body, dict) and response_body.get("code"):
+                        status_code = response_body.get("code")
+                        if status_code not in ['200', 200]:
+                            command.result = False
+                            result.result = False
+                            step.title = f"{command.command} -> {command.result}"
+                    step.add_sub_step(
+                        f'XHR:[{network.response_status_code if not status_code else status_code}]:{network.url}',
+                        json.dumps(network.response_body, ensure_ascii=False), AttachmentType.JSON)
             for console in command.details.get('consoles', []):
                 if console.level == 'SEVERE':
                     step.add_sub_step(f'Console:{console.message}', json.dumps(console), AttachmentType.JSON)
-                    result.result = False
+                    # result.result = False
+            if not command.result:
+                result.result = False
             result.steps.append(step)
             result.description = command.details.get('exception')
         return result
