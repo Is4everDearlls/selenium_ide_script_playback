@@ -190,7 +190,9 @@ class TestCase(BaseSeleniumIDEScript):
             for console in command.details.get('consoles', []):
                 if console.level == 'SEVERE':
                     step.add_sub_step(f'Console:{console.message}', json.dumps(console), AttachmentType.JSON)
-                    # result.result = False
+                    command.result = False
+                    result.result = False
+                    step.title = f"{command.comment if command.comment else command.command} -> {command.result}"
             if not command.result:
                 result.result = False
             result.steps.append(step)
