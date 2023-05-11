@@ -11,6 +11,7 @@ from selenium_ide_script.allure import TestResult, Step
 from selenium_ide_script.collector import WebDriverNetworkCollector, WebDriverConsoleCollector, \
     WebDriverScreenshotCollector
 from selenium_ide_script.operable import BaseWebOperation
+from selenium_ide_script.utils import url_replace
 
 
 class BaseSeleniumIDEScript(dict):
@@ -158,7 +159,7 @@ class TestCase(BaseSeleniumIDEScript):
     def commands(self):
         return self.get('commands')
 
-    def running(self, file_name, suite_name, url, driver):
+    def running(self, file_name, suite_name, url, driver, host):
         result = TestResult(file_name, suite_name, self.name, True)
         for command in self.commands:
             _command = command.get("command")
@@ -166,6 +167,7 @@ class TestCase(BaseSeleniumIDEScript):
                 continue
             if command.get('command') == 'open' and command.get('target') == '/':
                 command['target'] = url
+                command['target'] = url_replace(command['target'], host)
 
             command = Command.execute(driver, **command)
             step = Step(f"{command.comment if command.comment else command.command} -> {command.result}")
@@ -220,10 +222,10 @@ class TestSuites(BaseSeleniumIDEScript):
     def tests(self):
         return self.get("tests", [])
 
-    def running(self, file_name, url, driver):
+    def running(self, file_name, url, driver, host):
         results = []
         for test in self.tests:
-            results.append(TestCase(**test).running(file_name, self.name, url, driver))
+            results.append(TestCase(**test).running(file_name, self.name, url, driver, host))
         return results
 
 
@@ -255,8 +257,8 @@ class SeleniumIDEScriptFile(BaseSeleniumIDEScript):
             suites.append(suite)
         return suites
 
-    def running(self, driver):
+    def running(self, driver, host):
         result = []
         for suite in self.suites:
-            result.extend(TestSuites(**suite).running(self.name, self.url, driver))
+            result.extend(TestSuites(**suite).running(self.name, self.url, driver, host))
         return result

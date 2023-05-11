@@ -4,9 +4,9 @@ import re
 import winreg
 from typing import Dict, List, Union
 from zipfile import ZipFile
-
 import jsonpath
 import requests
+import urllib3
 
 
 def json_data_extract(data: Union[Dict, List], expression: str):
@@ -56,3 +56,14 @@ def update_chromedriver_version():
         os.remove('chromedriver.zip')
         os.remove('LICENSE.chromedriver')
     return True
+
+
+def url_replace(address: str, environmental: str):
+    if not address:
+        return None
+    key = urllib3.get_host(address)[1]
+    if '.' in key:
+        key = key.split('.')[0]
+    if '-' in key:
+        key = key.split('-')[0]
+    return address.replace(key, environmental)
