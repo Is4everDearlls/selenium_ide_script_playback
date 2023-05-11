@@ -186,8 +186,8 @@ class TestCase(BaseSeleniumIDEScript):
                         f'XHR:[{network.response_status_code if not status_code else status_code}]:{network.url}',
                         json.dumps(network.response_body, ensure_ascii=False), AttachmentType.JSON)
             for console in command.details.get('consoles', []):
+                step.add_sub_step(f'Console:{console.message}', json.dumps(console), AttachmentType.JSON)
                 if console.level == 'SEVERE':
-                    step.add_sub_step(f'Console:{console.message}', json.dumps(console), AttachmentType.JSON)
                     command.result = False
                     result.result = False
                     step.title = f"{command.comment if command.comment else command.command} -> {command.result}"
