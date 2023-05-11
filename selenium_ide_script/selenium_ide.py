@@ -183,7 +183,7 @@ class TestCase(BaseSeleniumIDEScript):
                             result.result = False
                             step.title = f"{command.comment if command.comment else command.command} -> {command.result}"
                     step.add_sub_step(
-                        f'XHR:[{network.response_status_code if not status_code else status_code}]:{network.url}',
+                        f'{network.method}  {network.url}  [{network.response_status_code if not status_code else status_code}]',
                         json.dumps(network.response_body, ensure_ascii=False), AttachmentType.JSON)
             for console in command.details.get('consoles', []):
                 step.add_sub_step(f'console:[{console.level}]', json.dumps(console), AttachmentType.JSON)
