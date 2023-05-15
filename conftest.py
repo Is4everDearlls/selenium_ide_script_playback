@@ -3,7 +3,7 @@ import json
 import pytest
 from selenium.webdriver import DesiredCapabilities, Chrome
 
-from selenium_ide_script.selenium_ide import SeleniumIDEScriptFile
+from selenium_ide_script.selenium_ide import SeleniumIDE
 from selenium_ide_script.utils import update_chromedriver_version
 
 
@@ -27,6 +27,6 @@ def pytest_generate_tests(metafunc):
 
     with Chrome(desired_capabilities=caps) as driver:
         with open('selenium_ide_script.side', encoding='utf-8') as f:
-            file = SeleniumIDEScriptFile(**json.load(f))
+            file = SeleniumIDE(**json.load(f))
             result.extend(file.running(driver, host))
     metafunc.parametrize("testcase", result)

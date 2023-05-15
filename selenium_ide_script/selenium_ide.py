@@ -229,7 +229,7 @@ class TestSuites(BaseSeleniumIDEScript):
         return results
 
 
-class SeleniumIDEScriptFile(BaseSeleniumIDEScript):
+class SeleniumIDE(BaseSeleniumIDEScript):
 
     def __init__(self, id, name, url, tests, suites, **kwargs):
         super().__init__(id, name, **kwargs)
